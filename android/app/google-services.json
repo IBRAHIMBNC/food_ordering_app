@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "15949630203",
+    "firebase_url": "https://getx-17070-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "getx-17070",
+    "storage_bucket": "getx-17070.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15949630203:android:d868216a92a7fe30a63e5e",
+        "android_client_info": {
+          "package_name": "com.practice.getx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15949630203-l83gcg4oadhodsp1kil80asi7jp2tbmu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.practice.getx",
+            "certificate_hash": "4dfc2db19a35c098d368a1e667407d1c82caef13"
+          }
+        },
+        {
+          "client_id": "15949630203-cemb759ognvfhksuj1sh46k0bj8ms91l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyFHXxrVQowomEdpEZ8PtkB0DoghT7tbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15949630203-cemb759ognvfhksuj1sh46k0bj8ms91l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
