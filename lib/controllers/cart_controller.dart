@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:getx_part2/models/cartItem.dart';
-import 'package:getx_part2/models/product.dart';
 
 class CartController extends GetxController {
   final Map<String, CartItem> _cartItems = {};
