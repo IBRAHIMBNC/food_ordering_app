@@ -1,11 +1,14 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_part2/screens/cart_screen.dart/cart_screen.dart';
 import 'package:getx_part2/screens/home_screen/widgets/foodPage_body.dart';
 import 'package:getx_part2/utils/colors.dart';
 import 'package:getx_part2/widgets/BigText.dart';
 import 'package:getx_part2/widgets/SmallText.dart';
 import 'package:sizer/sizer.dart';
+
+import '../profile_screen/profile_screen.dart';
 
 const String robotoFont = 'Roboto';
 
@@ -14,19 +17,12 @@ class HomeScreen extends StatelessWidget {
   Rx<int> currentInd = 0.obs;
 
   HomeScreen({Key? key}) : super(key: key);
+  List pages = [Body(), CartScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
-    final padding = MediaQuery.of(context).padding;
     return Scaffold(
-      body: Column(
-        children: [
-          buildAppBar(padding),
-          const Expanded(
-              child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(), child: FoodPageBody())),
-        ],
-      ),
+      body: Obx(() => pages[currentInd.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
             unselectedIconTheme: IconTheme.of(context),
@@ -48,7 +44,12 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
 
+class Body extends StatelessWidget {
+  const Body({
+    Key? key,
+  }) : super(key: key);
   Widget buildAppBar(EdgeInsets padding) {
     return Container(
       padding:
@@ -76,11 +77,8 @@ class HomeScreen extends StatelessWidget {
             height: 7.h,
             minWidth: 7.h,
             color: AppColors.mainColor,
-            onPressed: () async {
-              var data = await dbRef.get();
-              print(data.value);
-            },
-            child: Icon(
+            onPressed: () async {},
+            child: const Icon(
               Icons.search,
               color: Colors.white,
             ),
@@ -89,6 +87,19 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final padding = MediaQuery.of(context).padding;
+    return Column(
+      children: [
+        buildAppBar(padding),
+        const Expanded(
+            child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(), child: FoodPageBody())),
+      ],
     );
   }
 }
