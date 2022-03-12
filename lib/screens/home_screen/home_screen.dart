@@ -8,6 +8,7 @@ import 'package:getx_part2/widgets/BigText.dart';
 import 'package:getx_part2/widgets/SmallText.dart';
 import 'package:sizer/sizer.dart';
 
+import '../cartHistory_screen/cartHistory_screen.dart';
 import '../profile_screen/profile_screen.dart';
 
 const String robotoFont = 'Roboto';
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
   Rx<int> currentInd = 0.obs;
 
   HomeScreen({Key? key}) : super(key: key);
-  List pages = [Body(), CartScreen(), ProfileScreen()];
+  List pages = [Body(), CartHistoryScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {

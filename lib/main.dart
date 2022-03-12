@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,27 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: HomeScreen(),
+          home: AnimatedSplashScreen(
+            centered: true,
+            splashIconSize: 5000,
+            nextScreen: HomeScreen(),
+            duration: 1000,
+            splash: SizedBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/image/logo part 1.png',
+                    width: 70.w,
+                  ),
+                  Image.asset(
+                    'assets/image/logo part 2.png',
+                    width: 70.w,
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

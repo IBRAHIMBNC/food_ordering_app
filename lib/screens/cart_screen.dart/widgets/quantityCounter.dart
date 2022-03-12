@@ -46,9 +46,8 @@ class QuantityCounter extends StatelessWidget {
               child: const Icon(Icons.remove, color: Colors.white),
             ),
             Obx(
-              () => BigText(
-                  color: AppColors.mainBlackColor,
-                  text: quantity.value.toString()),
+              () =>
+                  BigText(color: Colors.white, text: quantity.value.toString()),
             ),
             GestureDetector(
               onTap: incrementItem,

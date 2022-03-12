@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:getx_part2/models/cartItem.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CartController extends GetxController {
   final Map<String, CartItem> _cartItems = {};
   Map<String, CartItem> get cartItems => {..._cartItems};
+  final prefs = SharedPreferences.getInstance();
 
   int get totalItems {
     int quantity = 0;
@@ -44,6 +46,15 @@ class CartController extends GetxController {
     update();
   }
 
+  void addToPref() {
+   List<CartItem> list =[];
+
+    _cartItems.forEach((key, item) {
+      data['id'] = item.id;
+      data['']
+    });
+  }
+
   void addItem(CartItem item) {
     if (_cartItems.containsKey(item.id)) {
       _cartItems.update(
@@ -57,6 +68,7 @@ class CartController extends GetxController {
       _cartItems.putIfAbsent(
           item.id, () => CartItem(item.id, item.product, item.quantity));
     }
+
     update();
   }
 

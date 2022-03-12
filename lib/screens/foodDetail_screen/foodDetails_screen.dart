@@ -20,7 +20,9 @@ import '../../controllers/cart_controller.dart';
 class FoodDetailScreen extends GetWidget<CartController> {
   CartController cartController = Get.find();
   final Product product;
-  FoodDetailScreen({Key? key, required this.product}) : super(key: key);
+  final bool isShowCart;
+  FoodDetailScreen({Key? key, required this.product, this.isShowCart = true})
+      : super(key: key);
 
   void addItem(int quantity) {
     final item = CartItem(product.id.toString(), product, quantity);
@@ -59,25 +61,26 @@ class FoodDetailScreen extends GetWidget<CartController> {
                         icon: Icons.arrow_back,
                       ),
                     ),
-                    GetBuilder<CartController>(
-                      builder: (controller) => Badge(
-                        padding: const EdgeInsets.all(6),
-                        shape: BadgeShape.circle,
-                        position: BadgePosition.topEnd(end: -2, top: -5),
-                        badgeContent: SmallText(
-                          text: controller.totalItems.toString(),
-                          color: Colors.white,
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            Get.to(() => CartScreen());
-                          },
-                          child: const CircularIcon(
-                            icon: Icons.shopping_cart_outlined,
+                    if (isShowCart)
+                      GetBuilder<CartController>(
+                        builder: (controller) => Badge(
+                          padding: const EdgeInsets.all(6),
+                          shape: BadgeShape.circle,
+                          position: BadgePosition.topEnd(end: -2, top: -5),
+                          badgeContent: SmallText(
+                            text: controller.totalItems.toString(),
+                            color: Colors.white,
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(() => CartScreen());
+                            },
+                            child: const CircularIcon(
+                              icon: Icons.shopping_cart_outlined,
+                            ),
                           ),
                         ),
-                      ),
-                    )
+                      )
                   ],
                 ),
               )),

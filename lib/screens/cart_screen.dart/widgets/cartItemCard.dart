@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getx_part2/models/cartItem.dart';
 import 'package:getx_part2/screens/cart_screen.dart/widgets/quantityCounter.dart';
 import 'package:getx_part2/widgets/SmallText.dart';
@@ -7,6 +8,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../utils/colors.dart';
 import '../../../widgets/BigText.dart';
+import '../../foodDetail_screen/foodDetails_screen.dart';
 
 class cartItemCard extends StatelessWidget {
   final CartItem cartItem;
@@ -21,14 +23,22 @@ class cartItemCard extends StatelessWidget {
       height: 15.h,
       width: 90.w,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Container(
-          width: 15.h,
-          height: 15.h,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              image: DecorationImage(
-                  image: CachedNetworkImageProvider(cartItem.product.img!),
-                  fit: BoxFit.cover)),
+        GestureDetector(
+          onTap: () {
+            Get.to(
+                () => FoodDetailScreen(
+                    product: cartItem.product, isShowCart: false),
+                transition: Transition.fade);
+          },
+          child: Container(
+            width: 15.h,
+            height: 15.h,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                image: DecorationImage(
+                    image: CachedNetworkImageProvider(cartItem.product.img!),
+                    fit: BoxFit.cover)),
+          ),
         ),
         Expanded(
           child: Container(
